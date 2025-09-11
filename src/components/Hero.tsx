@@ -1,4 +1,5 @@
 import { getHero } from '../lib/getHero';
+import Image from 'next/image';
 
 export default async function Hero() {
   const hero = await getHero();
@@ -29,7 +30,7 @@ export default async function Hero() {
    
         {/* Right: Hero Image */}
         <div className="flex justify-center">
-          <img
+          <Image
             src={hero.heroImage.fields.file.url}
             alt={hero.heroImage.fields.description || 'Hero image'}
             className="w-full max-w-md md:max-w-lg rounded-xl shadow-lg"

@@ -10,7 +10,7 @@ export default function ImpactPage() {
           Our Impact
         </h1>
         <p className="text-lg md:text-xl mb-12 text-[#b3f7ec]">
-          At She Forward Coast, we don't just serve — we transform. Our work aligns with key 
+          At She Forward Coast, we don&apos;t just serve — we transform. Our work aligns with key 
           <span className="text-[#FFD700] font-semibold"> UN Sustainable Development Goals (SDGs)</span>, 
           especially <span className="text-[#FFD700] font-semibold">Gender Equality (SDG 5)</span>, 
           <span className="text-[#FFD700] font-semibold">Quality Education (SDG 4)</span>, 
@@ -57,11 +57,11 @@ export default function ImpactPage() {
         {/* Testimonials */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           <div className="bg-white text-[#004d43] rounded-xl p-6 shadow-md">
-            <p className="italic">"She Forward Coast gave me the skills and confidence to launch my own business."</p>
+            <p className="italic">quot;She Forward Coast gave me the skills and confidence to launch my own business.&quot;</p>
             <p className="mt-4 font-semibold">— Aisha, Mombasa</p>
           </div>
           <div className="bg-white text-[#004d43] rounded-xl p-6 shadow-md">
-            <p className="italic">"Thanks to their climate training, our village now has a thriving tree nursery."</p>
+            <p className="italic">&quot;Thanks to their climate training, our village now has a thriving tree nursery.&quot</p>
             <p className="mt-4 font-semibold">— Fatma, Kisauni</p>
           </div>
         </div>

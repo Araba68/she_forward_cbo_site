@@ -8,7 +8,7 @@ export default function GetInvolved() {
           Be Part of the Change
         </h2>
         <p className="text-lg md:text-xl text-[#b3f7ec] mb-10">
-          Whether you're an individual, organization, or corporate ally — your support fuels our mission to uplift 
+          Whether you are an individual, organization, or corporate ally — your support fuels our mission to uplift 
           women and youth across Coastal Kenya. There are many ways to make an impact — choose what works best for you.
         </p>
 

@@ -1,6 +1,7 @@
 // ✅ File: /app/programs/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import { thematicAreas } from '@/lib/data';
+import Image from 'next/image';
 
 interface Props {
   params: {
@@ -63,7 +64,7 @@ export default async function ProgramPage({ params }: Props) {
                 <summary className="cursor-pointer font-medium text-[#004d43]">🖼️ Gallery</summary>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
                   {program.gallery.map((url, i) => (
-                    <img key={i} src={url} alt={`Program image ${i + 1}`} className="rounded-lg" />
+                    <Image key={i} src={url} alt={`Program image ${i + 1}`} className="rounded-lg" />
                   ))}
                 </div>
               </details>
