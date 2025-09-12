@@ -52,7 +52,7 @@ export default async function ProgramPage(props: Props) {
               <details className="mb-2">
                 <summary className="cursor-pointer font-medium text-[#004d43]">📅 Upcoming Events</summary>
                 <ul className="list-disc ml-6 mt-2">
-                  {program.upcomingEvents.map((event, i) => (
+                  {program.upcomingEvents.map((event) => (
                     <li key={event}>{event}</li>
                   ))}
                 </ul>
