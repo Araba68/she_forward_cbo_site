@@ -2,7 +2,9 @@ import { notFound } from 'next/navigation';
 import { thematicAreas } from '@/lib/data';
 
 export default async function ProgramPage({ params }: { params: { slug: string } }) {
-  const area = thematicAreas.find((item) => item.slug === params.slug);
+  // Await params if it's a Promise (for Next.js 15+ dynamic routes)
+  const resolvedParams = await params;
+  const area = thematicAreas.find((item) => item.slug === resolvedParams.slug);
 
   if (!area) return notFound();
 
@@ -12,7 +14,6 @@ export default async function ProgramPage({ params }: { params: { slug: string }
         <h1 className="text-3xl md:text-5xl font-bold font-heading text-[#004d43] mb-4">
           {area.title} Programs
         </h1>
-        {/* Only show description if it exists on area */}
         {'description' in area && area.description && (
           <p className="text-lg mb-10">{area.description}</p>
         )}
@@ -24,7 +25,6 @@ export default async function ProgramPage({ params }: { params: { slug: string }
           >
             <h2 className="text-2xl font-semibold mb-2">{program.title}</h2>
             <p className="mb-4">{program.description}</p>
-            {/* Only display fields that exist in your data */}
           </div>
         ))}
       </div>
