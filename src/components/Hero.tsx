@@ -6,10 +6,13 @@ export default async function Hero() {
 
   if (!hero) return null;
 
-  // Fix protocol-relative URL
-  const imageUrl = hero.heroImage.fields.file.url.startsWith('//')
-    ? 'https:' + hero.heroImage.fields.file.url
-    : hero.heroImage.fields.file.url;
+  // Safely resolve hero image URL
+  const rawUrl = hero.heroImage?.fields?.file?.url || null;
+  const imageUrl = rawUrl
+    ? rawUrl.startsWith('//')
+      ? 'https:' + rawUrl
+      : rawUrl
+    : null;
 
   return (
     <section
@@ -22,26 +25,29 @@ export default async function Hero() {
           <h1 className="font-heading text-4xl md:text-6xl font-bold leading-tight mb-6">
             {hero.title}
           </h1>
-          <p className="text-lg md:text-xl mb-8">
-            {hero.description}
-          </p>
-          <a
-            href={hero.ctaLink}
-            className="inline-block bg-[#FFD700] text-[#1c2120] font-semibold text-lg px-6 py-3 rounded-full shadow hover:opacity-90 transition"
-          >
-            {hero.ctaText}
-          </a>
+          <p className="text-lg md:text-xl mb-8">{hero.description}</p>
+          {hero.ctaLink && hero.ctaText && (
+            <a
+              href={hero.ctaLink}
+              className="inline-block bg-[#FFD700] text-[#1c2120] font-semibold text-lg px-6 py-3 rounded-full shadow hover:opacity-90 transition"
+            >
+              {hero.ctaText}
+            </a>
+          )}
         </div>
-        {/* Right: Hero Image */}
-        <div className="flex justify-center">
-          <Image
-            src={imageUrl}
-            alt={hero.heroImage.fields.description || 'Hero image'}
-            width={800}
-            height={500}
-            className="w-full max-w-md md:max-w-lg rounded-xl shadow-lg"
-          />
-        </div>
+
+        {/* Right: Hero Image (only render if available) */}
+        {imageUrl && (
+          <div className="flex justify-center">
+            <Image
+              src={imageUrl}
+              alt={hero.heroImage?.fields?.description || 'Hero image'}
+              width={800}
+              height={500}
+              className="w-full max-w-md md:max-w-lg rounded-xl shadow-lg"
+            />
+          </div>
+        )}
       </div>
     </section>
   );
