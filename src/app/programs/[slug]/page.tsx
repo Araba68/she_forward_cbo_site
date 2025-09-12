@@ -41,7 +41,7 @@ export default async function ProgramPage(props: Props) {
               <details className="mb-2">
                 <summary className="cursor-pointer font-medium text-[#004d43]">✅ Past Activities</summary>
                 <ul className="list-disc ml-6 mt-2">
-                  {program.pastActivities.map((activity, i) => (
+                  {program.pastActivities.map((activity) => (
                     <li key={activity}>{activity}</li>
                   ))}
                 </ul>
