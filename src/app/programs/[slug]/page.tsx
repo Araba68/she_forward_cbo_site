@@ -2,16 +2,13 @@ import { notFound } from 'next/navigation';
 import { thematicAreas } from '@/lib/data';
 import Image from 'next/image';
 
-interface Props {
-  params: {
-    slug: string;
-  };
-}
 
-export default async function ProgramPage({ params }: Props) {
+
+export default async function ProgramPage({ params }: PageProps) {
   const area = thematicAreas.find((item) => item.slug === params.slug);
 
   if (!area) return notFound();
+
 
   return (
     <section className="min-h-screen bg-white text-[#004d43] py-20 px-4 font-body">
