@@ -13,7 +13,7 @@ export default async function ProgramPage({ params }: { params: { slug: string }
         <h1 className="text-3xl md:text-5xl font-bold font-heading text-[#004d43] mb-4">
           {area.title} Programs
         </h1>
-        <p className="text-lg mb-10">{area.description}</p>
+        <p className="text-lg mb-10">{area.description ?? 'No description available.'}</p>
 
         {area.programs.map((program) => (
           <div
