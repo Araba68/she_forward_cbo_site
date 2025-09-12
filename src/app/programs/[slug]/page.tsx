@@ -1,12 +1,22 @@
+// src/app/programs/[slug]/page.tsx
+
 import { notFound } from 'next/navigation';
-import { thematicAreas } from '@/lib/data';
+import { thematicAreas, ThematicArea } from '@/lib/data';
 
-export default async function ProgramPage({ params }: { params: { slug: string } }) {
-  // Await params if it's a Promise (for Next.js 15+ dynamic routes)
-  const resolvedParams = await params;
-  const area = thematicAreas.find((item) => item.slug === resolvedParams.slug);
+export default async function ProgramPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
 
-  if (!area) return notFound();
+  const area: ThematicArea | undefined = thematicAreas.find(
+    (item) => item.slug === slug
+  );
+
+  if (!area) {
+    notFound();
+  }
 
   return (
     <section className="min-h-screen bg-white text-[#004d43] py-20 px-4 font-body">
@@ -14,7 +24,9 @@ export default async function ProgramPage({ params }: { params: { slug: string }
         <h1 className="text-3xl md:text-5xl font-bold font-heading text-[#004d43] mb-4">
           {area.title} Programs
         </h1>
-        {'description' in area && area.description && (
+
+        {/* description is optional, so safe check */}
+        {area.description && (
           <p className="text-lg mb-10">{area.description}</p>
         )}
 

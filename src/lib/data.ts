@@ -1,6 +1,19 @@
 // src/lib/data.ts
 
-export const thematicAreas = [
+export type Program = {
+  title: string;
+  slug: string;
+  description: string;
+};
+
+export type ThematicArea = {
+  title: string;
+  slug: string;
+  description?: string; // optional in case you add top-level descriptions later
+  programs: Program[];
+};
+
+export const thematicAreas: ThematicArea[] = [
   {
     title: 'Climate',
     slug: 'climate',
