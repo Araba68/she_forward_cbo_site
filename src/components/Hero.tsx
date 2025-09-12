@@ -6,10 +6,15 @@ export default async function Hero() {
 
   if (!hero) return null;
 
+  // Fix protocol-relative URL
+  const imageUrl = hero.heroImage.fields.file.url.startsWith('//')
+    ? 'https:' + hero.heroImage.fields.file.url
+    : hero.heroImage.fields.file.url;
+
   return (
     <section
       className="font-body px-6 py-20 md:py-28"
-      style={{ background: hero.bbackgroundColor || '#0a2e07', color: '#fffffe' }}
+      style={{ background: hero.backgroundColor || '#0a2e07', color: '#fffffe' }}
     >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-10">
         {/* Left: Text */}
@@ -27,12 +32,13 @@ export default async function Hero() {
             {hero.ctaText}
           </a>
         </div>
-   
         {/* Right: Hero Image */}
         <div className="flex justify-center">
           <Image
-            src={hero.heroImage.fields.file.url}
+            src={imageUrl}
             alt={hero.heroImage.fields.description || 'Hero image'}
+            width={800}
+            height={500}
             className="w-full max-w-md md:max-w-lg rounded-xl shadow-lg"
           />
         </div>
