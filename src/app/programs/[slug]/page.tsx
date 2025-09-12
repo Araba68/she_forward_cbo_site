@@ -8,8 +8,7 @@ interface Props {
   };
 }
 
-export default async function ProgramPage(props: Props) {
-  const { params } = await props;
+export default async function ProgramPage({ params }: Props) {
   const area = thematicAreas.find((item) => item.slug === params.slug);
 
   if (!area) return notFound();
