@@ -1,7 +1,6 @@
-// src/app/programs/[slug]/page.tsx
-
 import { notFound } from 'next/navigation';
 import { thematicAreas, ThematicArea } from '@/lib/data';
+import BackButton from '@/components/BackButton';
 
 export default async function ProgramPage({
   params,
@@ -39,6 +38,9 @@ export default async function ProgramPage({
             <p className="mb-4">{program.description}</p>
           </div>
         ))}
+
+        {/* Back button here */}
+        <BackButton />
       </div>
     </section>
   );

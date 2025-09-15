@@ -1,4 +1,12 @@
 'use client';
+import React from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+
+const iconMap: Record<string, React.ReactNode> = {
+  // icons here
+};
+
 
 import Link from 'next/link';
 import {
@@ -49,14 +57,6 @@ const thematicAreas = [
   },
 ];
 
-const iconMap: Record<string, JSX.Element> = {
-  users: <Users size={28} />,
-  'heart-pulse': <HeartPulse size={28} />,
-  'book-open': <BookOpen size={28} />,
-  briefcase: <Briefcase size={28} />,
-  leaf: <Leaf size={28} />,
-  cpu: <Cpu size={28} />,
-};
 
 export default function ThematicAreasSection() {
   return (

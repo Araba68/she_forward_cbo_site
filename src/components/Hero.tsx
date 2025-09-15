@@ -1,3 +1,4 @@
+// components/Hero.tsx
 import { getHero } from '../lib/getHero';
 import Image from 'next/image';
 
@@ -7,12 +8,21 @@ export default async function Hero() {
   if (!hero) return null;
 
   // Safely resolve hero image URL
-  const rawUrl = hero.heroImage?.fields?.file?.url || null;
+  const rawUrl: string | null =
+    (hero.heroImage?.fields?.file?.url as string | undefined) || null;
+
   const imageUrl = rawUrl
     ? rawUrl.startsWith('//')
       ? 'https:' + rawUrl
       : rawUrl
     : null;
+
+  // ✅ Ensure alt is always a string
+  const rawDescription = hero.heroImage?.fields.description;
+  const imageAlt: string =
+    typeof rawDescription === 'string'
+      ? rawDescription
+      : 'Hero image';
 
   return (
     <section
@@ -41,7 +51,7 @@ export default async function Hero() {
           <div className="flex justify-center">
             <Image
               src={imageUrl}
-              alt={hero.heroImage?.fields?.description || 'Hero image'}
+              alt={imageAlt}
               width={800}
               height={500}
               className="w-full max-w-md md:max-w-lg rounded-xl shadow-lg"
